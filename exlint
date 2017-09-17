@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+root=$(dirname $(readlink $BASH_SOURCE))
+
+$root/exlint.exs $1 2>&1 | $root/exlint.awk
