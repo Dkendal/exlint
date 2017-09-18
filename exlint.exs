@@ -89,12 +89,14 @@ end
 
 filename = List.first System.argv
 
+env = if filename =~ ~r/_test.exs$/, do: "test", else: "dev"
+
 case Exlint.root(filename) do
   {:error, msg} ->
     Logger.warn msg
 
   root ->
-    "#{root}/_build/dev/**/ebin"
+    "#{root}/_build/#{env}/**/ebin"
     |> wildcard
     |> map(&Code.append_path/1)
 end
