@@ -4,6 +4,8 @@ import Path
 import Enum
 require Logger
 
+Code.compiler_options(ignore_module_conflict: true)
+
 defmodule Exlint do
   @moduledoc """
   Elixir Linter.
